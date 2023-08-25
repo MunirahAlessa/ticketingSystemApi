@@ -2,17 +2,21 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Ticket extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      // Define the association here
+      Ticket.belongsTo(models.User, {
+        foreignKey: "assigned_to",
+        as: "assignee",
+      });
     }
   }
   Ticket.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true, // This will make the "id" field auto-incrementing
+      },
       title: DataTypes.STRING,
       description: DataTypes.STRING,
       status: DataTypes.STRING,

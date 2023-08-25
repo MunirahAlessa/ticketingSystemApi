@@ -8,11 +8,20 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // Define the association here
+      User.hasMany(models.Ticket, {
+        foreignKey: "assigned_to",
+        as: "tickets",
+      });
     }
   }
   User.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true, // This will make the "id" field auto-incrementing
+      },
       name: DataTypes.STRING,
       email: DataTypes.STRING,
       role: DataTypes.STRING,
@@ -24,5 +33,6 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
     }
   );
+
   return User;
 };
