@@ -1,0 +1,17 @@
+version: "3.10"
+
+services:
+  db:
+    image: postgres:13.0-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data:rw
+    environment:
+      - POSTGRES_DB=ticketing_system_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Q1234567
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
