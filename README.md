@@ -98,9 +98,8 @@ The API uses Sequelize to interact with the database. Here is the database schem
 User:
 ```
 id (Primary Key)
-username
-email
-password
+name
+role
 ```
 Ticket:
 ```
@@ -108,7 +107,7 @@ id (Primary Key)
 title
 description
 status
-assignee (Foreign Key to User)
+assigned_to (Foreign Key to User)
 ```
 
 
