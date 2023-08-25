@@ -3,14 +3,14 @@
 # Overview
 This documentation provides an overview of the Ticketing System API, a Node.js-based API for a simple ticketing system. This API is built using Node.js, Express.js, and Sequelize for database connectivity.
 # Prerequisites
-1- Node js 
-
-2- Npm 
-
-3- Docker
+```
+- Node js 
+- Npm 
+- Docker
+```
 
 # Project Structure
-```shell
+```
 ticketingsystemapis/
 ├── config/
 │   └── config.json
