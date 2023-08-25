@@ -89,7 +89,7 @@ PUT /api/users/:id: Update an existing user by ID.
 DELETE /api/users/:id: Delete a user by ID.
 ```
 
-or you can navigate to http://localhost:3000/docs to view swagger Api documentation
+or you can navigate to http://localhost:3000/doc to view swagger Api documentation
 
 
 # Database Schema
