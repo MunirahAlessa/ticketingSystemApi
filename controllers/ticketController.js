@@ -6,9 +6,11 @@ const { Ticket } = require("../models");
 async function createTicket(req, res) {
   try {
     const ticket = await Ticket.create(req.body);
-    res.status(201).json(ticket);
+    res
+      .status(200)
+      .json(ticket, { message: "Successfully created a new ticket" });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ error: "Bad request" });
   }
 }
 
@@ -17,7 +19,7 @@ async function getAllTickets(req, res) {
   try {
     const tickets = await Ticket.findAll();
 
-    res.json(tickets);
+    res.status(200).json(tickets);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -31,28 +33,24 @@ async function getTicketById(req, res) {
     if (!ticket) {
       return res.status(404).json({ error: "Ticket not found" });
     }
-    res.json(ticket);
+    res.status(200).json(ticket);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
 }
 
-// Update ticket detailsD
+// Update ticket details
 async function updateTicket(req, res) {
   const { id } = req.params;
-  console.log(req);
+
   try {
     const [updated] = await Ticket.update(req.body, {
-      where: {
-        id: 1,
-      },
+      where: { id },
     });
-    console.log("updated: ", [updated]);
-    console.log("req.body: ", req.body);
 
     if (updated) {
       const updatedTicket = await Ticket.findByPk(id);
-      return res.json(updatedTicket);
+      return res.status(200).json(updatedTicket);
     }
     return res.status(404).json({ error: "Ticket not found" });
   } catch (error) {
@@ -68,7 +66,9 @@ async function deleteTicket(req, res) {
       where: { id },
     });
     if (deleted) {
-      return res.json({ message: "Ticket deleted" });
+      return res
+        .status(200)
+        .json({ message: "Successfully ticket has been deleted" });
     }
     return res.status(404).json({ error: "Ticket not found" });
   } catch (error) {

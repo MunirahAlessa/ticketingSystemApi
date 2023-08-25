@@ -1,12 +1,11 @@
 const { User } = require("../models");
 
-// Create a new user
 async function createUser(req, res) {
   try {
     const user = await User.create(req.body);
-    res.status(201).json(user);
+    res.status(200).json(user, { message: "Successfully created a new user" });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ error: "Bad request" });
   }
 }
 
@@ -14,7 +13,7 @@ async function createUser(req, res) {
 async function getAllUsers(req, res) {
   try {
     const users = await User.findAll();
-    res.json(users);
+    res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -28,7 +27,7 @@ async function getUserById(req, res) {
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-    res.json(user);
+    res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -59,7 +58,9 @@ async function deleteUser(req, res) {
       where: { id },
     });
     if (deleted) {
-      return res.json({ message: "User deleted" });
+      return res
+        .status(200)
+        .json({ message: "Successfully user has been deleted" });
     }
     return res.status(404).json({ error: "User not found" });
   } catch (error) {

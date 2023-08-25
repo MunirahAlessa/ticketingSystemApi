@@ -1,0 +1,332 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "User and Ticket API",
+    "description": "API for managing user and ticket data"
+  },
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "Operations related to users"
+    },
+    {
+      "name": "Tickets",
+      "description": "Operations related to tickets"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a new user",
+        "description": "Create a new user with the given information.",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created a new user"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get a list of all users",
+        "description": "Get a list of all users.",
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the list of users",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get details of a specific user by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the user",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved user details",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Users"],
+        "summary": "Update user details",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the user",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "requestBody": {
+          "description": "Updated user object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "summary": "Delete a user by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the user",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully deleted"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/tickets": {
+      "post": {
+        "tags": ["Tickets"],
+        "summary": "Create a new ticket",
+        "description": "Create a new ticket with the given information.",
+        "parameters": [
+          {
+            "name": "ticket",
+            "in": "body",
+            "description": "Ticket object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Ticket"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created a new ticket"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Tickets"],
+        "summary": "Get a list of all tickets",
+        "description": "Get a list of all tickets.",
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the list of tickets",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Ticket"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/tickets/{id}": {
+      "get": {
+        "tags": ["Tickets"],
+        "summary": "Get details of a specific ticket by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the ticket",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved ticket details",
+            "schema": {
+              "$ref": "#/definitions/Ticket"
+            }
+          },
+          "404": {
+            "description": "Ticket not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Tickets"],
+        "summary": "Update ticket details",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the ticket",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "requestBody": {
+          "description": "Updated ticket object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Ticket"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Ticket"
+            }
+          },
+          "404": {
+            "description": "Ticket not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Tickets"],
+        "summary": "Delete a ticket by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the ticket",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ticket successfully deleted"
+          },
+          "404": {
+            "description": "Ticket not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "Ticket": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "assigned_to": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
