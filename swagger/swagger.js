@@ -7,13 +7,13 @@ const swaggerDefinition = {
     version: "1.0.0",
     description: "API description",
   },
-  basePath: "/", // Base path for your API
+  basePath: "/",
 };
 
 // Options for the swagger-jsdoc
 const options = {
   swaggerDefinition,
-  apis: ["./routes/*.js"], // Path to your API routes
+  apis: ["./routes/*.js"],
 };
 
 // Initialize swagger-jsdoc

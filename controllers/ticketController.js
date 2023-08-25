@@ -1,5 +1,3 @@
-// controllers/ticketController.js
-
 const { Ticket } = require("../models");
 
 // Create a new ticket

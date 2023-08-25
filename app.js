@@ -1,18 +1,18 @@
 const express = require("express");
 const app = express();
 const swaggerUi = require("swagger-ui-express");
-const swaggerJsdoc = require("./swagger");
-const swaggerDocument = require("./swagger.json"); // Replace './swagger.json' with the correct path to your JSON file
+const swaggerJsdoc = require("./swagger/swagger");
+const swaggerDocument = require("./swagger/swagger.json");
 
 // Use Swagger UI Express for API documentation
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJsdoc));
 const morgan = require("morgan");
 const db = require("./db");
 
-// Import and use your routes
+// Import and use the routes
 const ticketRoutes = require("./routes/tickets");
 const userRoutes = require("./routes/users");
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJsdoc));
 app.use("/api/tickets", ticketRoutes);
 app.use("/api/users", userRoutes);
 app.use(morgan("dev"));
