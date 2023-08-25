@@ -6,8 +6,9 @@ async function createTicket(req, res) {
     const ticket = await Ticket.create(req.body);
     res
       .status(200)
-      .json(ticket, { message: "Successfully created a new ticket" });
+      .json({ ticket, message: "Successfully created a new ticket" });
   } catch (error) {
+    console.log("error: ", error);
     res.status(400).json({ error: "Bad request" });
   }
 }
@@ -16,7 +17,6 @@ async function createTicket(req, res) {
 async function getAllTickets(req, res) {
   try {
     const tickets = await Ticket.findAll();
-
     res.status(200).json(tickets);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });

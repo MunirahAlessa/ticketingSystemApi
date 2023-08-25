@@ -3,8 +3,9 @@ const { User } = require("../models");
 async function createUser(req, res) {
   try {
     const user = await User.create(req.body);
-    res.status(200).json(user, { message: "Successfully created a new user" });
+    res.status(200).json({ user, message: "Successfully created a new user" });
   } catch (error) {
+    console.log("error: ", error);
     res.status(400).json({ error: "Bad request" });
   }
 }
@@ -42,7 +43,7 @@ async function updateUser(req, res) {
     });
     if (updated) {
       const updatedUser = await User.findByPk(id);
-      return res.json(updatedUser);
+      return res.status(200).json(updatedUser);
     }
     return res.status(404).json({ error: "User not found" });
   } catch (error) {

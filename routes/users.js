@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const bodyParser = require("body-parser");
+
 const userController = require("../controllers/userController");
 
 // Create a new user
-router.post("/", userController.createUser);
+router.post("/", bodyParser.json(), userController.createUser);
 
 // Get a list of all users
 router.get("/", userController.getAllUsers);
@@ -12,7 +14,7 @@ router.get("/", userController.getAllUsers);
 router.get("/:id", userController.getUserById);
 
 // Update user details
-router.put("/:id", userController.updateUser);
+router.put("/:id", bodyParser.json(), userController.updateUser);
 
 // Delete a user
 router.delete("/:id", userController.deleteUser);
