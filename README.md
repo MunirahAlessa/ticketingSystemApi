@@ -28,6 +28,9 @@ ticketingsystemapis/
 │   └── userRoutes.js
 ├── seeders/
 │   └── ...
+├── swagger/
+│   ├── swagger.js
+│   └── swagger.json
 ├── app.js
 ├── index.js
 ├── package.json
