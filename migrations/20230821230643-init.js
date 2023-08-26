@@ -21,12 +21,12 @@ module.exports = {
         type: Sequelize.STRING,
       },
       created_at: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
       },
       updated_at: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
       },
