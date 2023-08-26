@@ -25,6 +25,14 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
       role: DataTypes.STRING,
+      created_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW, // Set the default value to the current timestamp
+      },
+      updated_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW, // Set the default value to the current timestamp
+      },
     },
     {
       sequelize,

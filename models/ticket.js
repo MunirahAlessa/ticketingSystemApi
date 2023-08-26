@@ -21,6 +21,14 @@ module.exports = (sequelize, DataTypes) => {
       description: DataTypes.STRING,
       status: DataTypes.STRING,
       assigned_to: DataTypes.STRING,
+      created_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW, // Set the default value to the current timestamp
+      },
+      updated_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW, // Set the default value to the current timestamp
+      },
     },
     {
       sequelize,
