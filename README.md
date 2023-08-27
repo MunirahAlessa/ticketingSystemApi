@@ -52,11 +52,11 @@ ticketingsystemapis/
 
 1- Clone the repository from GitHub:
 ```shell
-git clone https://github.com/MunirahAlessa/ticketingsystemapis.git
+git clone https://github.com/MunirahAlessa/ticketingSystemApi.git
 ```
 2- Install the project dependencies:
 ```shell
-cd ticketingsystemapis
+cd ticketingSystemApi
 npm install
 ```
 3- Use Docker Compose to setup the datbase 
