@@ -71,7 +71,6 @@ npm run migrate
 
 5-Seed the database with initial data:
 ```shell
-npm run make-seed
 npm run seed
 ```
 6-Start the API server:
