@@ -52,7 +52,7 @@ ticketingsystemapis/
 
 1- Clone the repository from GitHub:
 ```shell
-git clone https://github.com/your-username/ticketingsystemapis.git
+git clone https://github.com/MunirahAlessa/ticketingsystemapis.git
 ```
 2- Install the project dependencies:
 ```shell
